@@ -26,9 +26,6 @@ public class FarmerController {
         model.addAttribute("title", "Farmer's Market");
         model .addAttribute("username", username);
         Credentials clientId = new Credentials("UsVIhi8B5OqaSawl-d_MIg","GJM3ct05cXXX0WjMcRN1LLxz5kOJAHs0pTD6Eu0Yu3yChpUFijugH_OF7WFzbxeF09TKcbYvRuYDNU9PCmoBcF2ohwG-c9sqTgZ0_jGGCJP4KENg6Tl8TbtnPQiuW3Yx");
-/*
-        YelpClient apiKey = new YelpClient("GJM3ct05cXXX0WjMcRN1LLxz5kOJAHs0pTD6Eu0Yu3yChpUFijugH_OF7WFzbxeF09TKcbYvRuYDNU9PCmoBcF2ohwG-c9sqTgZ0_jGGCJP4KENg6Tl8TbtnPQiuW3Yx");
-*/
 
         Yelp yelp = new Yelp(clientId);
         yelp.search(SearchCriteria.byLocation("San Antonio"));
