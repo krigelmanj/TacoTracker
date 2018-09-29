@@ -1,5 +1,6 @@
 package com.example.Farmer.s.Market.models;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,16 +21,23 @@ public class User {
 
 
 
-
-
-    @NotNull
-    @Size(min=3, max=10)
+    @NotNull(message = "Password must not be null.")
+    @Size(min=3, max=10, message = "Password must be between 3 and 10 characters")
     private String password;
+
+    public User() {}
+
+    public int getId() {
+        return id;
+    }
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
+
+
+
 
     public void setName(String name) {
         this.name = name;

@@ -16,12 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("login")
 public class LoginController {
-
     @Autowired
     private UserDao userDao;
 
@@ -38,7 +36,7 @@ public class LoginController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     public String displayLoginVerified(Model model, User user, BindingResult result, HttpServletRequest request) {
         model.addAttribute("title", "Login");
-        User dupeUser = (User) userDao.findTopByName(user.getName());
+        User dupeUser = userDao.findTopByName(user.getName());
 
         if(user.getName() == ""){
             result.rejectValue("name", "error.user.name2", "Please enter a username.");
@@ -92,7 +90,7 @@ public class LoginController {
 
         UserValidator userValidator = new UserValidator();
         userValidator.validate(newUser, result);
-        User dupeUser = (User) userDao.findTopByName(newUser.getName());
+        User dupeUser = userDao.findTopByName(newUser.getName());
 
         if(dupeUser != null) {
             if (newUser.getName().equals(dupeUser.getName())) {

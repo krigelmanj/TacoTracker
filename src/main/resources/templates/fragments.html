@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title th:text="${title}">My Cheeses</title>
+    <title th:text="${title}"></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,10 +22,14 @@
 </head>
 <body>
 
-<nav th:fragment="navigation">
+<nav th:fragment="navigation" th:object="${user}">
+
     <a href="/market">Home</a> |
     <a href="/login">Login</a> |
+    <a href="/login/sign-up">Sign-up</a>
+    <p th:if="${username}" th:text="hello"></p>
 </nav>
+
 <div id="map" th:fragment="map"></div>
 <script th:fragment="mapscript">
     var map;
