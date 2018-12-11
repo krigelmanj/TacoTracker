@@ -19,21 +19,10 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-
-
-
         User user = (User) target;
         if(user.getName() == null) {
             errors.rejectValue("name", "Please enter a username");
         }
-/*        if(newUser.getName().equals(user.getName())) {
-            errors.rejectValue("name", "That username is already registered");
-        }*/
-/*
-        if(user.getName() == dupeUser.getName() ){
-            errors.rejectValue("name", "That username is already registered");
-        }
-*/
 
     }
 

@@ -34,7 +34,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String displayLoginVerified(Model model, User user, BindingResult result, HttpServletRequest request) {
+    public String displayLoginVerified(Model model, User user, BindingResult result , HttpServletRequest request) {
         model.addAttribute("title", "Login");
         User dupeUser = userDao.findTopByName(user.getName());
 

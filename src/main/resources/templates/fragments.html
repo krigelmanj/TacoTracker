@@ -10,7 +10,7 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 100%;
+            height: 50%;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -31,14 +31,53 @@
 </nav>
 
 <div id="map" th:fragment="map"></div>
-<script th:fragment="mapscript">
+<script th:fragment="mapscript" th:inline="javascript">
     var map;
     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
+        /*<[CDATA[*/
+        var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 13
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        /*[# th:each="business : ${businesses}"]*/
+            var latLng = new google.maps.LatLng(/*[[${business.coordinates.latitude}]]*/, /*[[${business.coordinates.longitude}]]*/);
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                title: /*[[${business.name}]]*/
+
+            })
+            marker.setTitle(/*[[${business.name}]]*/);
+
+
+
+
+            marker.addListener('click', function() {
+            infowindow.open(map, this);});
+
+
+
+
+         /*   marker.setTitle(/!*[[${business.name}]]*!/);*/
+
+
+        var contentString =' <div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+/*[[${business.name}]]*/+'</h1>';
+        map.panTo(latLng)
+
+
+
+        /*[/]*/
+
+    /*]]>*/
+
     }
+
 </script>
 <script th:fragment="mapscript2" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV5mGg7-eDex1sG5eGw7bptkS4_aEJ_7o&amp;callback=initMap"
         async="defer"></script>
