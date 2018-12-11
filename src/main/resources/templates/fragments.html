@@ -39,9 +39,7 @@
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 13
         });
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
+//      Loop through individual businesses and create map markers
         /*[# th:each="business : ${businesses}"]*/
             var latLng = new google.maps.LatLng(/*[[${business.coordinates.latitude}]]*/, /*[[${business.coordinates.longitude}]]*/);
             var marker = new google.maps.Marker({
@@ -50,26 +48,10 @@
                 title: /*[[${business.name}]]*/
 
             })
-            marker.setTitle(/*[[${business.name}]]*/);
 
 
 
-
-            marker.addListener('click', function() {
-            infowindow.open(map, this);});
-
-
-
-
-         /*   marker.setTitle(/!*[[${business.name}]]*!/);*/
-
-
-        var contentString =' <div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">'+/*[[${business.name}]]*/+'</h1>';
         map.panTo(latLng)
-
 
 
         /*[/]*/

@@ -2,6 +2,7 @@ package com.example.Farmer.s.Market.models;
 
 import com.montealegreluis.yelpv3.businesses.*;
 import com.montealegreluis.yelpv3.businesses.distance.Distance;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,8 @@ public class TrackerBusiness extends Business {
     @Id
     private String id;
     public String name;
+    public Double rating;
+    public URL url;
 
 
     public TrackerBusiness(){}
